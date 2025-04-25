@@ -17,7 +17,7 @@ extension UITextField {
     }
     func applyTvingStyle(placeholder: String) {
         self.backgroundColor = .tv_gray4
-        self.textColor = .tv_gray2
+        self.textColor = .tv_white
         self.font = .systemFont(ofSize: 15, weight: .medium)
         self.layer.cornerRadius = 3
         self.clipsToBounds = true
