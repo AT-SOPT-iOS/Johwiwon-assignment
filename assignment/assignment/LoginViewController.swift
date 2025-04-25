@@ -8,7 +8,13 @@
 import SnapKit
 import UIKit
 
-class LoginViewController: UIViewController {
+
+class LoginViewController: UIViewController, WelcomViewControllerDelegate {
+    
+    func didLoginWithEmail(email: String) {
+        self.emailTextField.text = email
+    }
+
 
     private let titleLabel = UILabel()
     private let emailTextField = UITextField()
@@ -85,6 +91,11 @@ class LoginViewController: UIViewController {
             action: #selector(textFieldChanged),
             for: .editingChanged
         )
+        loginButton.addTarget(
+            self,
+            action: #selector(loginTapped),
+            for: .touchUpInside
+        )
     }
 
     private func configurePasswordRightView() {
@@ -153,6 +164,15 @@ class LoginViewController: UIViewController {
         loginButton.isEnabled = isEmailValid && isPasswordValid
         loginButton.backgroundColor =
             loginButton.isEnabled ? .tv_red : .tv_black
+    }
+    
+    @objc private func loginTapped() {
+        let welcomVC = WelcomViewController()
+        welcomVC.delegate = self
+        if let email = emailTextField.text {
+            welcomVC.welcomeLabel = email
+            }
+        self.navigationController?.pushViewController(welcomVC, animated: true)
     }
 
 }
