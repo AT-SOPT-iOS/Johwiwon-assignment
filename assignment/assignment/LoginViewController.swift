@@ -88,7 +88,63 @@ class LoginViewController: UIViewController {
     }
 
     private func configurePasswordRightView() {
+        clearButton.setImage(
+            UIImage(systemName: "xmark.circle.fill"),
+            for: .normal
+        )
+        clearButton.tintColor = .tv_white
+        clearButton.addTarget(
+            self,
+            action: #selector(clearPassWord),
+            for: .touchUpInside
+        )
+        clearButton.isHidden = true
 
+        togglePasswordButton.setImage(
+            UIImage(systemName: "eye.slash.fill"),
+            for: .normal
+        )
+        togglePasswordButton.tintColor = .tv_white
+        togglePasswordButton.addTarget(
+            self,
+            action: #selector(toggleSecure),
+            for: .touchUpInside
+        )
+
+        let rightViewContainer = UIView()
+        rightViewContainer.addSubview(clearButton)
+        rightViewContainer.addSubview(togglePasswordButton)
+
+        clearButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalTo(togglePasswordButton.snp.leading).offset(-8)
+            make.width.height.equalTo(24)
+        }
+
+        togglePasswordButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.width.height.equalTo(24)
+        }
+
+        passwordTextField.rightView = rightViewContainer
+        passwordTextField.rightViewMode = .whileEditing
+    }
+
+    @objc private func clearPassWord() {
+        passwordTextField.text = ""
+        textFieldChanged()
+    }
+
+    @objc private func toggleSecure() {
+        passwordTextField.isSecureTextEntry.toggle()
+        let imageName =
+            passwordTextField.isSecureTextEntry
+            ? "ic_non_eye" : "ic_eye_darkgray"
+        togglePasswordButton.setImage(
+            UIImage(systemName: imageName),
+            for: .normal
+        )
     }
 
     @objc private func textFieldChanged() {
