@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		14F7107C2DC2982C002C9B20 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 14F7107B2DC2982C002C9B20 /* Then */; };
+		14F7107F2DC2983E002C9B20 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 14F7107E2DC2983E002C9B20 /* SnapKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		146906E12DAEAF7D006A51DC /* assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = assignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14F7107C2DC2982C002C9B20 /* Then in Frameworks */,
+				14F7107F2DC2983E002C9B20 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +85,8 @@
 			);
 			name = assignment;
 			packageProductDependencies = (
+				14F7107B2DC2982C002C9B20 /* Then */,
+				14F7107E2DC2983E002C9B20 /* SnapKit */,
 			);
 			productName = assignment;
 			productReference = 146906E12DAEAF7D006A51DC /* assignment.app */;
@@ -107,6 +116,10 @@
 			);
 			mainGroup = 146906D82DAEAF7D006A51DC;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				14F7107A2DC2982C002C9B20 /* XCRemoteSwiftPackageReference "Then" */,
+				14F7107D2DC2983E002C9B20 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 146906E22DAEAF7D006A51DC /* Products */;
 			projectDirPath = "";
@@ -149,7 +162,6 @@
 				INFOPLIST_FILE = assignment/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -176,7 +188,6 @@
 				INFOPLIST_FILE = assignment/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -333,6 +344,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		14F7107A2DC2982C002C9B20 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		14F7107D2DC2983E002C9B20 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		14F7107B2DC2982C002C9B20 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 14F7107A2DC2982C002C9B20 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		14F7107E2DC2983E002C9B20 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 14F7107D2DC2983E002C9B20 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 146906D92DAEAF7D006A51DC /* Project object */;
 }

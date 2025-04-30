@@ -5,8 +5,8 @@
 //  Created by 조휘원 on 4/16/25.
 //
 
-import SnapKit
 import UIKit
+import SnapKit
 
 protocol WelcomViewControllerDelegate: AnyObject {
     func didLoginWithEmail(email: String)
@@ -32,6 +32,15 @@ class WelcomViewController: UIViewController {
         let welcomImage = UIImageView(image: UIImage(named: "img_tving"))
         return welcomImage
     }()
+    
+    private let mainButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("메인으로", for: .normal)
+        button.tintColor = .tvRed
+        button.titleLabel?.textColor = .tvWhite
+        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
+        return button
+    }()
 
     // MARK: - Lifecycle
 
@@ -46,7 +55,7 @@ class WelcomViewController: UIViewController {
     // MARK: - Setup
 
     private func setUpViews() {
-        [welcomImage, welcomeMessageLabel].forEach {
+        [welcomImage, welcomeMessageLabel, mainButton].forEach {
             self.view.addSubview($0)
         }
     }
@@ -61,6 +70,11 @@ class WelcomViewController: UIViewController {
         }
         welcomeMessageLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
+        }
+        mainButton.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(66)
+            $0.height.equalTo(52)
         }
     }
 
