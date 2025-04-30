@@ -5,8 +5,8 @@
 //  Created by 조휘원 on 4/16/25.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 protocol WelcomViewControllerDelegate: AnyObject {
     func didLoginWithEmail(email: String)
@@ -32,13 +32,14 @@ class WelcomViewController: UIViewController {
         let welcomImage = UIImageView(image: UIImage(named: "img_tving"))
         return welcomImage
     }()
-    
+
     private let mainButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("메인으로", for: .normal)
-        button.tintColor = .tvRed
-        button.titleLabel?.textColor = .tvWhite
+        button.setTitleColor(.tvWhite, for: .normal)
+        button.backgroundColor = .tvRed
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
+        button.layer.cornerRadius = 3
         return button
     }()
 
@@ -50,6 +51,7 @@ class WelcomViewController: UIViewController {
         setUpViews()
         setUpConstraints()
         configureWelcomeMessage()
+        configureActions()
     }
 
     // MARK: - Setup
@@ -86,5 +88,18 @@ class WelcomViewController: UIViewController {
             ? "\(email!) 님\n반가워요!"
             : "델리게이트 실패 ㅋ"
         welcomeMessageLabel.text = message
+    }
+
+    private func configureActions() {
+        mainButton.addTarget(
+            self,
+            action: #selector(mainButtonTapped),
+            for: .touchUpInside
+        )
+    }
+
+    @objc private func mainButtonTapped() {
+        let homeVC = HomeViewController()
+        navigationController?.pushViewController(homeVC, animated: true)
     }
 }
