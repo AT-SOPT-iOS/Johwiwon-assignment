@@ -85,7 +85,7 @@ class WelcomViewController: UIViewController {
     private func configureWelcomeMessage() {
         let message =
             email != nil
-            ? "\(email!) 님\n반가워요!"
+            ? "\(email!) 님\n반q가워요!"
             : "델리게이트 실패 ㅋ"
         welcomeMessageLabel.text = message
     }
