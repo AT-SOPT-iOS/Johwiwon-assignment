@@ -16,11 +16,11 @@ extension TodayTving {
     static func dummy() -> [TodayTving] {
         return [
             TodayTving(
-                image: UIImage(named: "image13") ?? UIImage(),
+                image: UIImage(named: "movie1") ?? UIImage(),
                 number: 1
             ),
             TodayTving(
-                image: UIImage(named: "image115") ?? UIImage(),
+                image: UIImage(named: "movie4") ?? UIImage(),
                 number: 2
             ),
             TodayTving(image: UIImage(named: "movie1") ?? UIImage(), number: 3),
@@ -96,8 +96,8 @@ struct LivePopularMovie {
 extension LivePopularMovie {
     static func dummy() -> [LivePopularMovie] {
         return [
-            LivePopularMovie(image: UIImage(named: "image13") ?? UIImage()),
-            LivePopularMovie(image: UIImage(named: "image115") ?? UIImage()),
+            LivePopularMovie(image: UIImage(named: "movie5") ?? UIImage()),
+            LivePopularMovie(image: UIImage(named: "movie4") ?? UIImage()),
             LivePopularMovie(image: UIImage(named: "movie1") ?? UIImage()),
             LivePopularMovie(image: UIImage(named: "movie2") ?? UIImage()),
             LivePopularMovie(image: UIImage(named: "movie3") ?? UIImage()),

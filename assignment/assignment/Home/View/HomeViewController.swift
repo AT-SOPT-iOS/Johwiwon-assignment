@@ -162,8 +162,13 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout,
         switch section {
         case .banner:
             return CGSize(width: view.frame.width, height: 400)
-        default:
+        case .todayTving:
             return CGSize(width: view.frame.width, height: 220)
+        case .livePopularLive:
+            return CGSize(width: view.frame.width, height: 220)
+        case .livePopularMovie:
+            return CGSize(width: view.frame.width, height: 220)
+
         }
     }
 }

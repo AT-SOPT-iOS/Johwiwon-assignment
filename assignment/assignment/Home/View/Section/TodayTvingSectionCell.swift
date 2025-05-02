@@ -24,7 +24,7 @@ final class TodayTvingSectionCell: UICollectionViewCell {
     private let horizontalCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 12
+        layout.minimumLineSpacing = 20
         let collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: layout

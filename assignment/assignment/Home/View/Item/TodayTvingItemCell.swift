@@ -46,16 +46,18 @@ final class TodayTvingItemCell: UICollectionViewCell {
             contentView.addSubview($0)
         }
         
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
     }
 
     private func setLayout() {
         imageView.snp.makeConstraints{
-            $0.edges.equalToSuperview()
+            $0.leading.top.trailing.equalToSuperview()
+            $0.height.equalTo(146)
         }
         numLabel.snp.makeConstraints {
-            $0.leading.top.equalToSuperview().inset(4)
+            $0.bottom.equalTo(imageView.snp.bottom)
+            $0.trailing.equalTo(imageView.snp.leading).offset(5)
             $0.height.equalTo(80)
         }
     }

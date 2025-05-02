@@ -7,8 +7,8 @@
 
 // MARK: - LivePopularLiveItemCell
 
-import UIKit
 import SnapKit
+import UIKit
 
 final class LivePopularLiveItemCell: UICollectionViewCell {
     static let identifier = "LivePopularLiveItemCell"
@@ -20,37 +20,35 @@ final class LivePopularLiveItemCell: UICollectionViewCell {
         let descriptor =
             UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body)
             .withSymbolicTraits(.traitItalic) ?? UIFontDescriptor()
-        label.font = UIFont(descriptor: descriptor, size: 50)
+        label.font = UIFont(descriptor: descriptor, size: 19)
         label.textColor = .white
         label.textAlignment = .center
         return label
     }()
-    
+
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 50)
+        label.font = UIFont.systemFont(ofSize: 10)
         label.textColor = .white
         label.textAlignment = .center
         return label
     }()
-    
+
     private let episodeLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 50)
-        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 10)
+        label.textColor = .tvGray3
         label.textAlignment = .center
         return label
     }()
-    
+
     private let viewRateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 50)
-        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 10)
+        label.textColor = .tvGray3
         label.textAlignment = .center
         return label
     }()
-    
-    
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -65,13 +63,13 @@ final class LivePopularLiveItemCell: UICollectionViewCell {
     func configure(with item: LivePopularLive) {
         imageView.image = item.image
         numLabel.text = "\(item.number)"
-        titleLabel.text = item.title
-        episodeLabel.text = item.episode
-        viewRateLabel.text = item.episode
+        titleLabel.text = "\(item.title)"
+        episodeLabel.text = "\(item.episode)"
+        viewRateLabel.text = "\(item.viewRate)"
     }
 
     private func setupView() {
-        [imageView, numLabel, titleLabel, episodeLabel, viewRateLabel].forEach{
+        [imageView, numLabel, titleLabel, episodeLabel, viewRateLabel].forEach {
             contentView.addSubview($0)
         }
         imageView.contentMode = .scaleAspectFill
@@ -79,25 +77,31 @@ final class LivePopularLiveItemCell: UICollectionViewCell {
     }
 
     private func setLayout() {
-        imageView.snp.makeConstraints{
-            $0.edges.equalToSuperview()
+        imageView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(120)
         }
         numLabel.snp.makeConstraints {
-            $0.leading.top.equalToSuperview().inset(4)
-            $0.height.equalTo(80)
+            $0.top.equalTo(imageView.snp.bottom).offset(10)
+            $0.leading.equalTo(imageView).inset(6)
+            $0.height.equalTo(30)
         }
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(imageView.snp.bottom).offset(10)
-            $0.height.equalTo(80)
+            $0.top.equalTo(numLabel.snp.top)
+            $0.leading.equalTo(numLabel.snp.trailing).offset(5)
+            $0.height.equalTo(16)
         }
         episodeLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(10)
-            $0.height.equalTo(80)
+            $0.top.equalTo(titleLabel.snp.bottom)
+            $0.leading.equalTo(numLabel.snp.trailing).offset(5)
+            $0.height.equalTo(16)
         }
         viewRateLabel.snp.makeConstraints {
-            $0.top.equalTo(episodeLabel.snp.bottom).offset(10)
-            $0.height.equalTo(80)
+            $0.top.equalTo(episodeLabel.snp.bottom)
+            $0.leading.equalTo(numLabel.snp.trailing).offset(5)
+            $0.height.equalTo(16)
+            $0.bottom.lessThanOrEqualToSuperview().inset(4)
         }
-        
+
     }
 }

@@ -113,6 +113,6 @@ extension LivePopularLiveSectionCell: UICollectionViewDataSource,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        return CGSize(width: 120, height: 160)
+        return CGSize(width: 160, height: 200)
     }
 }
