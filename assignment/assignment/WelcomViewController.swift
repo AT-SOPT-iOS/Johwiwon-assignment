@@ -33,6 +33,16 @@ class WelcomViewController: UIViewController {
         return welcomImage
     }()
 
+    private let mainButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("메인으로", for: .normal)
+        button.setTitleColor(.tvWhite, for: .normal)
+        button.backgroundColor = .tvRed
+        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
+        button.layer.cornerRadius = 3
+        return button
+    }()
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -41,12 +51,13 @@ class WelcomViewController: UIViewController {
         setUpViews()
         setUpConstraints()
         configureWelcomeMessage()
+        configureActions()
     }
 
     // MARK: - Setup
 
     private func setUpViews() {
-        [welcomImage, welcomeMessageLabel].forEach {
+        [welcomImage, welcomeMessageLabel, mainButton].forEach {
             self.view.addSubview($0)
         }
     }
@@ -62,6 +73,11 @@ class WelcomViewController: UIViewController {
         welcomeMessageLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
+        mainButton.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(66)
+            $0.height.equalTo(52)
+        }
     }
 
     // MARK: - Helpers
@@ -69,8 +85,21 @@ class WelcomViewController: UIViewController {
     private func configureWelcomeMessage() {
         let message =
             email != nil
-            ? "\(email!) 님\n반q가워요!"
+            ? "\(email!) 님\n반가워요!"
             : "델리게이트 실패 ㅋ"
         welcomeMessageLabel.text = message
+    }
+
+    private func configureActions() {
+        mainButton.addTarget(
+            self,
+            action: #selector(mainButtonTapped),
+            for: .touchUpInside
+        )
+    }
+
+    @objc private func mainButtonTapped() {
+        let homeVC = HomeViewController()
+        navigationController?.pushViewController(homeVC, animated: true)
     }
 }
