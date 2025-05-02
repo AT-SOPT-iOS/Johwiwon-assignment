@@ -7,8 +7,8 @@
 
 // MARK: - MainBannerSectionCell
 
-import SnapKit
 import UIKit
+import SnapKit
 
 final class MainBannerSectionCell: UICollectionViewCell {
     static let identifier = "MainBannerSectionCell"
