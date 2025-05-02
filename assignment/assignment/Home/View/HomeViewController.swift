@@ -25,6 +25,10 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
+    }
+
+    private func configureUI() {
         view.backgroundColor = .black
         setupCollectionView()
     }
@@ -38,29 +42,23 @@ class HomeViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
 
-        collectionView.register(
-            TodayTvingSectionCell.self,
-            forCellWithReuseIdentifier: TodayTvingSectionCell.identifier
-        )
-
-        collectionView.register(
-            LivePopularLiveSectionCell.self,
-            forCellWithReuseIdentifier: LivePopularLiveSectionCell.identifier
-        )
-
-        collectionView.register(
-            LivePopularMovieSectionCell.self,
-            forCellWithReuseIdentifier: LivePopularMovieSectionCell.identifier
-        )
-
-        collectionView.register(
-            MainBannerSectionCell.self,
-            forCellWithReuseIdentifier: MainBannerSectionCell.identifier
-        )
+        registerCells()
 
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+    }
+
+    private func registerCells() {
+        [
+            TodayTvingSectionCell.self, LivePopularLiveSectionCell.self,
+            LivePopularLiveSectionCell.self, MainBannerSectionCell.self,
+        ].forEach {
+            collectionView.register(
+                $0,
+                forCellWithReuseIdentifier: $0.identifier
+            )
         }
     }
 }
