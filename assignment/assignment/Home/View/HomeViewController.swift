@@ -161,7 +161,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout,
 
         switch section {
         case .banner:
-            return CGSize(width: view.frame.width, height: 200)
+            return CGSize(width: view.frame.width, height: 400)
         default:
             return CGSize(width: view.frame.width, height: 220)
         }

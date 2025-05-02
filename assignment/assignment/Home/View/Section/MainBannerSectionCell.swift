@@ -15,8 +15,8 @@ final class MainBannerSectionCell: UICollectionViewCell {
 
     private let imageView: UIImageView = {
         let imageView=UIImageView()
-        imageView.image = UIImage(named: "image 13")
-        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "movie1")
+        imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
     }()

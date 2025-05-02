@@ -65,18 +65,18 @@ final class HomeHeaderView: UIView {
         logoImageView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(21)
             $0.leading.equalToSuperview()
-            $0.height.equalTo(24)
+            $0.height.equalTo(78)
         }
         
         iconButton.snp.makeConstraints{
             $0.centerY.equalTo(logoImageView)
-            $0.trailing.equalToSuperview().offset(11)
+            $0.trailing.equalToSuperview().inset(11)
             $0.size.equalTo(30)
         }
         
         searchButton.snp.makeConstraints{
             $0.centerY.equalTo(logoImageView)
-            $0.trailing.equalTo(iconButton.snp.leading).offset(10)
+            $0.trailing.equalTo(iconButton.snp.leading).offset(-10)
             $0.size.equalTo(30)
         }
         
