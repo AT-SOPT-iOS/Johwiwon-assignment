@@ -15,7 +15,7 @@ final class LivePopularLiveSectionCell: UICollectionViewCell, UICollectionViewDe
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "실시간 인기 LIVE"
+        label.text = HomeSection.livePopularLive.title
         label.font = .boldSystemFont(ofSize: 15)
         label.textColor = .white
         return label

@@ -12,6 +12,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    private let headerView = HomeHeaderView()
+
     private let collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: UICollectionViewFlowLayout()
@@ -42,25 +44,40 @@ class HomeViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
 
-        registerCells()
+        collectionView.register(
+            TodayTvingSectionCell.self,
+            forCellWithReuseIdentifier: TodayTvingSectionCell.identifier
+        )
 
-        view.addSubview(collectionView)
+        collectionView.register(
+            LivePopularLiveSectionCell.self,
+            forCellWithReuseIdentifier: LivePopularLiveSectionCell.identifier
+        )
+
+        collectionView.register(
+            LivePopularMovieSectionCell.self,
+            forCellWithReuseIdentifier: LivePopularMovieSectionCell.identifier
+        )
+
+        collectionView.register(
+            MainBannerSectionCell.self,
+            forCellWithReuseIdentifier: MainBannerSectionCell.identifier
+        )
+
+        [headerView, collectionView].forEach {
+            view.addSubview($0)
+        }
+        headerView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(142)
+        }
         collectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(headerView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
 
-    private func registerCells() {
-        [
-            TodayTvingSectionCell.self, LivePopularLiveSectionCell.self,
-            LivePopularLiveSectionCell.self, MainBannerSectionCell.self,
-        ].forEach {
-            collectionView.register(
-                $0,
-                forCellWithReuseIdentifier: $0.identifier
-            )
-        }
-    }
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout,

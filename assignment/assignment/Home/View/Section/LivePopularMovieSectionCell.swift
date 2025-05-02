@@ -17,7 +17,7 @@ final class LivePopularMovieSectionCell: UICollectionViewCell,
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "실시간 인기 영화"
+        label.text = HomeSection.livePopularMovie.title
         label.font = .boldSystemFont(ofSize: 15)
         label.textColor = .white
         return label

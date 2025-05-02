@@ -15,7 +15,7 @@ final class TodayTvingSectionCell: UICollectionViewCell {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "오늘의 티빙 TOP 20"
+        label.text = HomeSection.todayTving.title
         label.font = .boldSystemFont(ofSize: 15)
         label.textColor = .white
         return label
