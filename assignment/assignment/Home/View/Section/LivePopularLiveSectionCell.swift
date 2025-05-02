@@ -5,17 +5,17 @@
 //  Created by 조휘원 on 5/1/25.
 //
 
-// MARK: - TodayTvingSectionCell
+// MARK: - LivePopularLiveSectionCell
 
 import UIKit
 import SnapKit
 
-final class TodayTvingSectionCell: UICollectionViewCell {
-    static let identifier = "TodayTvingSectionCell"
+final class LivePopularLiveSectionCell: UICollectionViewCell, UICollectionViewDelegate {
+    static let identifier = "LivePopularLiveSectionCell"
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "오늘의 티빙 TOP 20"
+        label.text = "실시간 인기 LIVE"
         label.font = .boldSystemFont(ofSize: 15)
         label.textColor = .white
         return label
@@ -33,7 +33,7 @@ final class TodayTvingSectionCell: UICollectionViewCell {
         return collectionView
     }()
 
-    private var items: [TodayTving] = []
+    private var items: [LivePopularLive] = []
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -46,7 +46,7 @@ final class TodayTvingSectionCell: UICollectionViewCell {
         setupCollectionView()
     }
 
-    func configure(with items: [TodayTving]) {
+    func configure(with items: [LivePopularLive]) {
         self.items = items
         horizontalCollectionView.reloadData()
     }
@@ -73,13 +73,13 @@ final class TodayTvingSectionCell: UICollectionViewCell {
         horizontalCollectionView.delegate = self
         horizontalCollectionView.dataSource = self
         horizontalCollectionView.register(
-            TodayTvingItemCell.self,
-            forCellWithReuseIdentifier: TodayTvingItemCell.identifier
+            LivePopularLiveItemCell.self,
+            forCellWithReuseIdentifier: LivePopularLiveItemCell.identifier
         )
     }
 }
 
-extension TodayTvingSectionCell: UICollectionViewDataSource,
+extension LivePopularLiveSectionCell: UICollectionViewDataSource,
     UICollectionViewDelegateFlowLayout
 {
     func collectionView(
@@ -95,9 +95,9 @@ extension TodayTvingSectionCell: UICollectionViewDataSource,
     ) -> UICollectionViewCell {
         guard
             let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: TodayTvingItemCell.identifier,
+                withReuseIdentifier: LivePopularLiveItemCell.identifier,
                 for: indexPath
-            ) as? TodayTvingItemCell
+            ) as? LivePopularLiveItemCell
         else {
             return UICollectionViewCell()
         }

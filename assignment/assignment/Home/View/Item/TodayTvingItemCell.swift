@@ -5,8 +5,10 @@
 //  Created by 조휘원 on 5/1/25.
 //
 
-import SnapKit
+// MARK: - TodayTvingItemCell
+
 import UIKit
+import SnapKit
 
 final class TodayTvingItemCell: UICollectionViewCell {
     static let identifier = "TodayTvingItemCell"

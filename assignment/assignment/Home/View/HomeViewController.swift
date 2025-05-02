@@ -5,6 +5,8 @@
 //  Created by 조휘원 on 5/1/25.
 //
 
+// MARK: - HomeViewController
+
 import SnapKit
 import UIKit
 
@@ -15,9 +17,11 @@ class HomeViewController: UIViewController {
         collectionViewLayout: UICollectionViewFlowLayout()
     )
 
-    private let sections: [String] = ["오늘의 티빙 Top 20", "TV 프로그램", "영화"]
-
     private let todayTvingItems: [TodayTving] = TodayTving.dummy()
+    private let livePopularLiveItems: [LivePopularLive] =
+        LivePopularLive.dummy()
+    private let livePopularMovieItems: [LivePopularMovie] =
+        LivePopularMovie.dummy()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +40,22 @@ class HomeViewController: UIViewController {
 
         collectionView.register(
             TodayTvingSectionCell.self,
-            forCellWithReuseIdentifier: "TodayTvingSectionCell"
+            forCellWithReuseIdentifier: TodayTvingSectionCell.identifier
+        )
+
+        collectionView.register(
+            LivePopularLiveSectionCell.self,
+            forCellWithReuseIdentifier: LivePopularLiveSectionCell.identifier
+        )
+
+        collectionView.register(
+            LivePopularMovieSectionCell.self,
+            forCellWithReuseIdentifier: LivePopularMovieSectionCell.identifier
+        )
+
+        collectionView.register(
+            MainBannerSectionCell.self,
+            forCellWithReuseIdentifier: MainBannerSectionCell.identifier
         )
 
         view.addSubview(collectionView)
@@ -50,7 +69,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout,
     UICollectionViewDataSource
 {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1  // ✅ 오직 오늘의 티빙 섹션만 표시
+        return HomeSection.allCases.count
     }
 
     func collectionView(
@@ -64,17 +83,56 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout,
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        guard
-            let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: "TodayTvingSectionCell",
-                for: indexPath
-            ) as? TodayTvingSectionCell
-        else {
-            assertionFailure("❌ TodayTvingSectionCell dequeue 실패")
+        guard let section = HomeSection(rawValue: indexPath.section) else {
             return UICollectionViewCell()
         }
-        cell.configure(with: todayTvingItems)
-        return cell
+
+        switch section {
+        case .banner:
+            guard
+                let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: MainBannerSectionCell.identifier,
+                    for: indexPath
+                ) as? MainBannerSectionCell
+            else {
+                return UICollectionViewCell()
+            }
+            return cell
+        case .todayTving:
+            guard
+                let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: TodayTvingSectionCell.identifier,
+                    for: indexPath
+                ) as? TodayTvingSectionCell
+            else {
+                return UICollectionViewCell()
+            }
+            cell.configure(with: todayTvingItems)
+            return cell
+
+        case .livePopularLive:
+            guard
+                let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: LivePopularLiveSectionCell.identifier,
+                    for: indexPath
+                ) as? LivePopularLiveSectionCell
+            else {
+                return UICollectionViewCell()
+            }
+            cell.configure(with: livePopularLiveItems)
+            return cell
+        case .livePopularMovie:
+            guard
+                let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: LivePopularMovieSectionCell.identifier,
+                    for: indexPath
+                ) as? LivePopularMovieSectionCell
+            else {
+                return UICollectionViewCell()
+            }
+            cell.configure(with: livePopularMovieItems)
+            return cell
+        }
     }
 
     func collectionView(
@@ -82,6 +140,15 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        return CGSize(width: view.frame.width, height: 220)
+        guard let section = HomeSection(rawValue: indexPath.section) else {
+            return .zero
+        }
+
+        switch section {
+        case .banner:
+            return CGSize(width: view.frame.width, height: 200)
+        default:
+            return CGSize(width: view.frame.width, height: 220)
+        }
     }
 }

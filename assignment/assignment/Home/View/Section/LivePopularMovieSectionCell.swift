@@ -5,17 +5,19 @@
 //  Created by 조휘원 on 5/1/25.
 //
 
-// MARK: - LivePopularLiveSectionCell
+// MARK: - LivePopularMovieSectionCell
 
-import UIKit
 import SnapKit
+import UIKit
 
-final class LivePopularLiveSectionCell: UICollectionViewCell, UICollectionViewDelegate {
-    static let identifier = "LivePopularLiveSectionCell"
+final class LivePopularMovieSectionCell: UICollectionViewCell,
+    UICollectionViewDelegate
+{
+    static let identifier = "LivePopularMovieSectionCell"
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "실시간 인기 LIVE"
+        label.text = "실시간 인기 영화"
         label.font = .boldSystemFont(ofSize: 15)
         label.textColor = .white
         return label
@@ -33,7 +35,7 @@ final class LivePopularLiveSectionCell: UICollectionViewCell, UICollectionViewDe
         return collectionView
     }()
 
-    private var items: [LivePopularLive] = []
+    private var items: [LivePopularMovie] = []
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -46,7 +48,7 @@ final class LivePopularLiveSectionCell: UICollectionViewCell, UICollectionViewDe
         setupCollectionView()
     }
 
-    func configure(with items: [LivePopularLive]) {
+    func configure(with items: [LivePopularMovie]) {
         self.items = items
         horizontalCollectionView.reloadData()
     }
@@ -73,13 +75,13 @@ final class LivePopularLiveSectionCell: UICollectionViewCell, UICollectionViewDe
         horizontalCollectionView.delegate = self
         horizontalCollectionView.dataSource = self
         horizontalCollectionView.register(
-            LivePopularLiveItemCell.self,
-            forCellWithReuseIdentifier: LivePopularLiveItemCell.identifier
+            LivePopularMovieItemCell.self,
+            forCellWithReuseIdentifier: LivePopularMovieItemCell.identifier
         )
     }
 }
 
-extension LivePopularLiveSectionCell: UICollectionViewDataSource,
+extension LivePopularMovieSectionCell: UICollectionViewDataSource,
     UICollectionViewDelegateFlowLayout
 {
     func collectionView(
@@ -95,9 +97,9 @@ extension LivePopularLiveSectionCell: UICollectionViewDataSource,
     ) -> UICollectionViewCell {
         guard
             let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: LivePopularLiveItemCell.identifier,
+                withReuseIdentifier: LivePopularMovieItemCell.identifier,
                 for: indexPath
-            ) as? LivePopularLiveItemCell
+            ) as? LivePopularMovieItemCell
         else {
             return UICollectionViewCell()
         }

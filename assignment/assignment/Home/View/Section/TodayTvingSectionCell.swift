@@ -5,9 +5,13 @@
 //  Created by 조휘원 on 5/1/25.
 //
 
+// MARK: - TodayTvingSectionCell
+
 import UIKit
+import SnapKit
 
 final class TodayTvingSectionCell: UICollectionViewCell {
+    static let identifier = "TodayTvingSectionCell"
 
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -31,7 +35,7 @@ final class TodayTvingSectionCell: UICollectionViewCell {
 
     private var items: [TodayTving] = []
 
-    override required init?(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
