@@ -34,12 +34,12 @@ final class HomeHeaderView: UIView {
             let label = UILabel()
             label.text = title
             label.textColor = .white
-            label.font = .systemFont(ofSize: 14)
+            label.font = .systemFont(ofSize: 17)
             return label
         }
         let stackView = UIStackView(arrangedSubviews: labels)
         stackView.axis = .horizontal
-        stackView.spacing = 20
+        stackView.spacing = 28
         stackView.distribution = .equalSpacing
         return stackView
     }()
@@ -67,22 +67,22 @@ final class HomeHeaderView: UIView {
             $0.leading.equalToSuperview()
             $0.height.equalTo(78)
         }
-        
-        iconButton.snp.makeConstraints{
+
+        iconButton.snp.makeConstraints {
             $0.centerY.equalTo(logoImageView)
             $0.trailing.equalToSuperview().inset(11)
             $0.size.equalTo(30)
         }
-        
-        searchButton.snp.makeConstraints{
+
+        searchButton.snp.makeConstraints {
             $0.centerY.equalTo(logoImageView)
             $0.trailing.equalTo(iconButton.snp.leading).offset(-10)
             $0.size.equalTo(30)
         }
-        
-        categoryStackView.snp.makeConstraints{
+
+        categoryStackView.snp.makeConstraints {
             $0.top.equalTo(logoImageView.snp.bottom)
-            $0.leading.trailing.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(27)
         }
     }
 
