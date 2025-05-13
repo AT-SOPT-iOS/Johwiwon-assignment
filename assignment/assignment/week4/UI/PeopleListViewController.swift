@@ -42,7 +42,7 @@ final class PeopleListViewController: UIViewController {
         Task {
             do {
                 self.people = try await PeopleService.shared.fetchPeopleList(
-                    apiKey: "ad27ef97acc6852a831ddb1d07b69a55",
+                    apiKey: "",
                     name: nil
                 )
                 self.tableView.reloadData()
