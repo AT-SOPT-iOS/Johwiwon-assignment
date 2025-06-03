@@ -52,6 +52,18 @@ struct TvingView: View {
                     }
                     .padding(.horizontal)
                 }
+                
+                Image(.movie3)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                
+                TodayTvingRow(items: TodayTving.dummy())
+                LivePopularLiveRow(items: LivePopularLive.dummy())
+                LivePopularMovieRow(items: LivePopularMovie.dummy())
+                BaseBallRow(items: BaseBall.dummy())
+                AdvertisementRow(items: Advertisement.dummy())
+                KKHLifeRow(items: KKHLife.dummy())
+                
             }
         }
         .background(Color.black)
